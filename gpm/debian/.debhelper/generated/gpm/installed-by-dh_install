@@ -1,0 +1,6 @@
+./contrib/control/gpm_has_mouse_control
+./debian/tmp/dh-exec.yPawd4RP/usr/sbin/gpm-microtouch-setup
+./debian/tmp/dh-exec.yPawd4RP/etc/apm/event.d/gpm
+./debian/tmp/dh-exec.yPawd4RP/usr/sbin/gpm-mouse-test
+./src/gpm
+./src/prog/mev

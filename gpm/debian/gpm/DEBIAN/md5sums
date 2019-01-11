@@ -1,0 +1,9 @@
+d77900568e01745f16225275a869bb63  usr/bin/mev
+72880259849f7cdd9a75ed87ef110e51  usr/lib/gpm/gpm_has_mouse_control
+224c651a40c73b8dba5403e42779b108  usr/sbin/gpm
+773e3056cf40d158a8b65dfbcbd10661  usr/sbin/gpm-microtouch-setup
+6e8537cce5aeacfcdf705592b9d0418d  usr/sbin/gpm-mouse-test
+4dbdff7563e1bec3f254b913b3233856  usr/share/doc/gpm/changelog.Debian.gz
+3efff843bb9df177add8e5eca2f2d8dd  usr/share/doc/gpm/changelog.gz
+7a8c7a5facf414b47ec269ffa5bfb160  usr/share/doc/gpm/copyright
+94dab10f4153d6b76812b0027de40065  usr/share/lintian/overrides/gpm

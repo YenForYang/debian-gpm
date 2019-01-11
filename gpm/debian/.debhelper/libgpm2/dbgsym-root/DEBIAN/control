@@ -1,0 +1,13 @@
+Package: libgpm2-dbgsym
+Source: gpm
+Version: 1.20.7-6
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Axel Beckert <abe@debian.org>
+Installed-Size: 39
+Depends: libgpm2 (= 1.20.7-6)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libgpm2
+Build-Ids: e23c2acc0d0a9c318ca8af4e166ce559d1b1d478

@@ -1,0 +1,1127 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package gpm
+dpkg-buildpackage: info: source version 1.20.7-6
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Samuel Thibault <sthibault@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean
+	rm -f debian/gpm.debhelper.log debian/libgpm-dev.debhelper.log debian/libgpm2.debhelper.log
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/dev/shm/gpm/gpm'
+# for gpm_has_mouse_control
+if [ -d contrib/control ]; then dh_auto_clean -Dcontrib/control; fi
+	cd contrib/control && make -j8 clean
+make[2]: Entering directory '/dev/shm/gpm/gpm/contrib/control'
+rm -f gpm_has_mouse_control
+make[2]: Leaving directory '/dev/shm/gpm/gpm/contrib/control'
+# Needs to be removed before dh_auto_clean is called, so
+# adding to debian/clean does not suffice.
+rm -f Makefile
+dh_auto_clean
+make[1]: Leaving directory '/dev/shm/gpm/gpm'
+   dh_autoreconf_clean
+	rm -f -- ./autom4te.cache/requests ./src/headers/config.h.in\~
+	rm -f debian/autoreconf.before debian/autoreconf.after
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	cp -an --reflink=auto debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c.tmp
+	mv debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c.tmp config/config.guess
+	cp -an --reflink=auto debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222 debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222.tmp
+	mv debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222.tmp config/config.sub
+	rm -rf debian/.debhelper/
+	rm -f -- debian/gpm.substvars debian/libgpm2.substvars debian/libgpm-dev.substvars ./Makefile.include ./aclocal.m4 ./config.log ./config.status ./configure ./configure.ac ./doc/Makefile ./doc/doc.gpm ./libtool ./src/Makefile ./src/headers/config.h ./src/headers/config.h.in ./src/.depend ./contrib/Makefile ./src/mice.o ./src/report.o ./src/tools.o ./src/twiddler.o ./src/tools.lo ./src/daemon/add_mouse.o ./src/daemon/build_argv.o ./src/daemon/check_kill.o ./src/daemon/check_uniqueness.o ./src/daemon/cmdline.o ./src/daemon/disable_paste.o ./src/daemon/do_client.o ./src/daemon/do_selection.o ./src/daemon/find_mouse_by_name.o ./src/daemon/get_console_size.o ./src/daemon/get_data.o ./src/daemon/getmousedata.o ./src/daemon/gpm-killed.o ./src/daemon/gpm.o ./src/daemon/gpm_exited.o ./src/daemon/header.o ./src/daemon/init_mice.o ./src/daemon/loadlut.o ./src/daemon/main.o ./src/daemon/old_main.o ./src/daemon/open_console.o ./src/daemon/processconn.o ./src/daemon/processmouse.o ./src/daemon/processrequest.o ./src/daemon/processspecial.o ./src/daemon/reset_mice.o ./src/daemon/selection_copy.o ./src/daemon/selection_paste.o ./src/daemon/startup.o ./src/daemon/usage.o ./src/daemon/wait_text.o ./src/generic/getsym.o ./src/generic/isodigit.o ./src/lib/libcurses.o ./src/lib/libhigh.o ./src/lib/liblow.o ./src/lib/libxtra.o ./src/lib/report-lib.o ./src/prog/gpm-root.o ./src/prog/mouse-test.o ./src/prog/open_console.o ./src/lib/libgpm.a ./src/lib/libcurses.lo ./src/lib/libhigh.lo ./src/lib/liblow.lo ./src/lib/libxtra.lo ./src/lib/report-lib.lo ./src/lib/libgpm.so.2 ./src/lib/libgpm.so.2.1.0 ./src/lib/libgpm.so.2.1.0.response ./src/prog/disable-paste ./src/prog/display-buttons ./src/prog/display-coords ./src/prog/get-versions ./src/prog/gpm-root ./src/prog/gpm-root.c ./src/prog/hltest ./src/prog/mev ./src/prog/mouse-test.o debian/files
+	rm -fr -- debian/gpm/ debian/tmp/ debian/libgpm2/ debian/libgpm-dev/ ./config/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=694675974 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   debian/rules override_dh_update_autotools_config
+make[1]: Entering directory '/dev/shm/gpm/gpm'
+./autogen.sh
+rm -f config/config.guess
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: linking file 'config/config.guess'
+rm -f config/config.sub
+libtoolize: linking file 'config/config.sub'
+rm -f config/install-sh
+libtoolize: linking file 'config/install-sh'
+rm -f config/ltmain.sh
+libtoolize: linking file 'config/ltmain.sh'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/config.guess'
+libtoolize: copying file 'config/config.sub'
+libtoolize: copying file 'config/install-sh'
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+dh_update_autotools_config
+	install -d debian/.debhelper/bucket/files
+	cp -an --reflink=auto config/config.guess debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c.tmp
+	mv debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c.tmp debian/.debhelper/bucket/files/19c12bb2ca19e68724c2854ed0512469518df19b0710cc2011a5ca540810979c
+	cp -f /usr/share/misc/config.guess ./config/config.guess
+	cp -an --reflink=auto config/config.sub debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222.tmp
+	mv debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222.tmp debian/.debhelper/bucket/files/f7197ddfb309e86d5fbd7d3b440a5ababfbd4aac1e1f53b492e28e54db58b222
+	cp -f /usr/share/misc/config.sub ./config/config.sub
+make[1]: Leaving directory '/dev/shm/gpm/gpm'
+   dh_autoreconf
+	find ! -ipath "./debian/*" -a ! \( -path '*/.git/*' -o -path '*/.hg/*' -o -path '*/.bzr/*' -o -path '*/.svn/*' -o -path '*/CVS/*' \) -a  -type f -exec md5sum {} + -o -type l -printf "symlink  %p
+" > debian/autoreconf.before
+	grep -q ^XDT_ configure.ac
+	autoreconf -f -i
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+	find ! -ipath "./debian/*" -a ! \( -path '*/.git/*' -o -path '*/.hg/*' -o -path '*/.bzr/*' -o -path '*/.svn/*' -o -path '*/CVS/*' \) -a  -type f -exec md5sum {} + -o -type l -printf "symlink  %p
+" > debian/autoreconf.after
+	rm -f debian/gpm.debhelper.log debian/libgpm-dev.debhelper.log debian/libgpm2.debhelper.log
+   debian/rules override_dh_auto_configure
+make[1]: Entering directory '/dev/shm/gpm/gpm'
+dh_auto_configure -- --without-curses
+	./configure --build=x86_64-linux-gnu --prefix=/usr --includedir=\${prefix}/include --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info --sysconfdir=/etc --localstatedir=/var --disable-silent-rules --libdir=\${prefix}/lib/x86_64-linux-gnu --libexecdir=\${prefix}/lib/x86_64-linux-gnu --runstatedir=/run --disable-maintainer-mode --disable-dependency-tracking --without-curses
+configure: WARNING: unrecognized options: --disable-silent-rules, --disable-maintainer-mode, --disable-dependency-tracking
+configure: loading site script /usr/share/config.site
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for gcc... icc.pl
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc.pl accepts -g... yes
+checking for icc.pl option to accept ISO C89... none needed
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by icc.pl... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/x86_64-linux-gnu-nm -B
+checking the name lister (/usr/bin/x86_64-linux-gnu-nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... /usr/bin/x86_64-linux-gnu-objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... /usr/bin/x86_64-linux-gnu-strip
+checking for ranlib... ranlib
+checking for gawk... /usr/bin/gawk
+checking command to parse /usr/bin/x86_64-linux-gnu-nm -B output from icc.pl object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if icc.pl supports -fno-rtti -fno-exceptions... yes
+checking for icc.pl option to produce PIC... -fPIC -DPIC
+checking if icc.pl PIC flag -fPIC -DPIC works... yes
+checking if icc.pl static flag -static works... no
+checking if icc.pl supports -c -o file.o... yes
+checking if icc.pl supports -c -o file.o... (cached) yes
+checking whether the icc.pl linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... /usr/bin/ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for a BSD-compatible install... /usr/bin/install
+checking for bison... /usr/bin/bison -y
+checking whether ln -s works... yes
+checking for dvips... /usr/bin/dvips
+checking for texi2html... /usr/bin/texi2html
+checking for tex... /usr/bin/tex
+checking for texindex... /usr/bin/texindex
+checking for makeinfo... /usr/bin/makeinfo
+checking for diff... /usr/bin/diff
+checking for sed... (cached) /bin/sed
+checking for emacs... no
+checking syslog.h usability... yes
+checking syslog.h presence... yes
+checking for syslog.h... yes
+checking linux/input.h usability... yes
+checking linux/input.h presence... yes
+checking for linux/input.h... yes
+checking linux/joystick.h usability... yes
+checking linux/joystick.h presence... yes
+checking for linux/joystick.h... yes
+checking sys/sysmacros.h usability... yes
+checking sys/sysmacros.h presence... yes
+checking for sys/sysmacros.h... yes
+checking linux/major.h usability... yes
+checking linux/major.h presence... yes
+checking for linux/major.h... yes
+checking linux/tty.h usability... yes
+checking linux/tty.h presence... yes
+checking for linux/tty.h... yes
+checking sys/socket.h usability... yes
+checking sys/socket.h presence... yes
+checking for sys/socket.h... yes
+checking for __u32... yes
+checking whether system is ELF... yes
+checking for vsyslog... yes
+checking for syslog... yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+configure: creating ./config.status
+config.status: creating Makefile.include
+config.status: creating Makefile
+config.status: creating doc/Makefile
+config.status: creating src/Makefile
+config.status: creating contrib/Makefile
+config.status: creating doc/doc.gpm
+config.status: creating src/headers/config.h
+config.status: executing libtool commands
+configure: WARNING: unrecognized options: --disable-silent-rules, --disable-maintainer-mode, --disable-dependency-tracking
+make[1]: Leaving directory '/dev/shm/gpm/gpm'
+	rm -f debian/gpm.debhelper.log debian/libgpm-dev.debhelper.log debian/libgpm2.debhelper.log
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/dev/shm/gpm/gpm'
+# for gpm_has_mouse_control
+dh_auto_build -Dcontrib/control
+	cd contrib/control && make -j8 "INSTALL=install --strip-program=true"
+make[2]: Entering directory '/dev/shm/gpm/gpm/contrib/control'
+gcc -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wl,-z,now -o gpm_has_mouse_control -Wall gpm_has_mouse_control.c
+as: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[2]: Leaving directory '/dev/shm/gpm/gpm/contrib/control'
+dh_auto_build
+	make -j8
+make[2]: Entering directory '/dev/shm/gpm/gpm'
+touch src/.depend # to prevent unecessary warnings
+make -C src dep
+make[3]: Entering directory '/dev/shm/gpm/gpm/src'
+/usr/bin/bison -y  /dev/shm/gpm/gpm/src/prog/gpm-root.y && mv y.tab.c prog/gpm-root.c
+# make links in srcdir
+make[3]: [Makefile:92: .depend] Error 1 (ignored)
+# create dependencies
+for DEPS in `echo *.c */*.c`; do \
+icc.pl -I. -I /dev/shm/gpm/gpm/src -M -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 $DEPS | \
+/bin/sed 's/^\(.*\)\.o\([ :]+\)/\1.o \1.lo\2/g' >> .depend ; done
+# make links in srcdir
+make[3]: [Makefile:92: dep] Error 1 (ignored)
+# create dependencies
+for DEPS in `echo *.c */*.c`; do \
+icc.pl -I. -I /dev/shm/gpm/gpm/src -M -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 $DEPS | \
+/bin/sed 's/^\(.*\)\.o\([ :]+\)/\1.o \1.lo\2/g' >> .depend ; done
+make[3]: Leaving directory '/dev/shm/gpm/gpm/src'
+make[3]: Entering directory '/dev/shm/gpm/gpm/src'
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o mice.o mice.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o twiddler.o twiddler.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o synaptics.o synaptics.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/add_mouse.o daemon/add_mouse.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/init_mice.o daemon/init_mice.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/reset_mice.o daemon/reset_mice.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/build_argv.o daemon/build_argv.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/disable_paste.o daemon/disable_paste.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/do_client.o daemon/do_client.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/do_selection.o daemon/do_selection.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/get_console_size.o daemon/get_console_size.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/get_data.o daemon/get_data.c
+daemon/add_mouse.c(89): warning #266: function "strcmp" declared implicitly
+           if (!strcmp(value, "types")) exit(M_listTypes());
+                ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/getmousedata.o daemon/getmousedata.c
+daemon/do_client.c(51): warning #2218: result of call is not used
+     write(fd,event, sizeof(Gpm_Event));
+     ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/gpm.o daemon/gpm.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/gpm-killed.o daemon/gpm-killed.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/header.o daemon/header.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/main.o daemon/main.c
+daemon/getmousedata.c(39): warning #3334: a value of type "unsigned char *" cannot be used to initialize an entity of type "char *" due to signedness
+     char *edata=data+type->packetlen;
+                 ^
+
+daemon/getmousedata.c(52): warning #2218: result of call is not used
+        write(fifofd, data, howmany);
+        ^
+
+daemon/getmousedata.c(58): warning #2600: return value type does not match the function type in signedness
+           return data;
+                  ^
+
+daemon/getmousedata.c(76): warning #2218: result of call is not used
+              write(fifofd, edata-i, j);
+              ^
+
+daemon/getmousedata.c(90): warning #2600: return value type does not match the function type in signedness
+     return data;
+            ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/old_main.o daemon/old_main.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/open_console.o daemon/open_console.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/check_kill.o daemon/check_kill.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/gpm_exited.o daemon/gpm_exited.c
+twiddler.c(179): warning #2218: result of call is not used
+           dup(1);
+           ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o generic/isodigit.o generic/isodigit.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o generic/getsym.o generic/getsym.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/processspecial.o daemon/processspecial.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/processconn.o daemon/processconn.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/processmouse.o daemon/processmouse.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/processrequest.o daemon/processrequest.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/selection_copy.o daemon/selection_copy.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/selection_paste.o daemon/selection_paste.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/cmdline.o daemon/cmdline.c
+daemon/processrequest.c(102): warning #2218: result of call is not used
+           write(ci->fd,&event,sizeof(Gpm_Event));
+           ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/loadlut.o daemon/loadlut.c
+daemon/processconn.c(23): warning #47: incompatible redefinition of macro "_GNU_SOURCE"
+  #define _GNU_SOURCE  /* needed for struct ucred */
+          ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/find_mouse_by_name.o daemon/find_mouse_by_name.c
+daemon/processspecial.c(158): warning #2218: result of call is not used
+        dup(1);                     /* stderr */
+        ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/usage.o daemon/usage.c
+daemon/processmouse.c(83): warning #2601: argument of type "char *" is incompatible with parameter of type "unsigned char *" in signedness
+              || ((*((which_mouse->m_type)->fun))(&nEvent,data)==-1) ) {
+                                                          ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/check_uniqueness.o daemon/check_uniqueness.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/startup.o daemon/startup.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o daemon/wait_text.o daemon/wait_text.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o report.o report.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o tools.o tools.c
+daemon/loadlut.c(53): warning #2601: argument of type "char *" is incompatible with parameter of type "const unsigned char *" in signedness
+        i += getsym(charset+i, &this);
+                    ^
+
+daemon/loadlut.c(55): warning #2601: argument of type "char *" is incompatible with parameter of type "const unsigned char *" in signedness
+           i += getsym(charset+i+1, &next) + 1;
+                       ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/liblow.lo lib/liblow.c
+daemon/check_uniqueness.c(38): warning #2218: result of call is not used
+        fscanf(fp, "%d", &old_pid);
+        ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libhigh.lo lib/libhigh.c
+daemon/startup.c(104): warning #266: function "M_listMice" declared implicitly
+           exit(M_listMice());
+                ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libxtra.lo lib/libxtra.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/report-lib.lo lib/report-lib.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o tools.lo tools.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -DPIC -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libcurses.lo lib/libcurses.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/liblow.o lib/liblow.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libhigh.o lib/libhigh.c
+lib/libxtra.c(64): warning #2218: result of call is not used
+        fgets(line, 128, f);
+        ^
+
+lib/libxtra.c(126): warning #2218: result of call is not used
+     write(gpm_fd, &conn, sizeof(Gpm_Connect));
+     ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libxtra.o lib/libxtra.c
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/report-lib.o lib/report-lib.c
+lib/libcurses.c(154): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "char *" in signedness
+        gpm_convert_event(mdata,&ev);
+                          ^
+
+icc.pl -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o lib/libcurses.o lib/libcurses.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/mev.o prog/mev.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/hltest.o prog/hltest.c
+lib/libxtra.c(64): warning #2218: result of call is not used
+        fgets(line, 128, f);
+        ^
+
+lib/libxtra.c(126): warning #2218: result of call is not used
+     write(gpm_fd, &conn, sizeof(Gpm_Connect));
+     ^
+
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/mouse-test.o prog/mouse-test.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/open_console.o prog/open_console.c
+lib/libcurses.c(154): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "char *" in signedness
+        gpm_convert_event(mdata,&ev);
+                          ^
+
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/disable-paste.o prog/disable-paste.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/display-buttons.o prog/display-buttons.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/display-coords.o prog/display-coords.c
+icc.pl -Iheaders -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/get-versions.o prog/get-versions.c
+prog/display-buttons.c(52): warning #181: argument of type "time_t={__time_t={long}}" is incompatible with format "%d", expecting argument of type "int"
+     printf("[%d] delta: %ds",now,delta);
+                              ^
+
+icc.pl -fPIC -shared -Wl,-soname,libgpm.so.2 \
+-Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o lib/libgpm.so.2.1.0 lib/liblow.lo lib/libhigh.lo lib/libxtra.lo lib/report-lib.lo tools.lo lib/libcurses.lo   	
+prog/display-coords.c(53): warning #181: argument of type "time_t={__time_t={long}}" is incompatible with format "%d", expecting argument of type "int"
+     printf("[%d] delta: %ds",now,delta);
+                              ^
+
+ar rc lib/libgpm.a lib/liblow.o lib/libhigh.o lib/libxtra.o lib/report-lib.o tools.o lib/libcurses.o
+ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+ranlib lib/libgpm.a
+ranlib: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+mice.c(173): warning #858: type qualifier on return type is meaningless
+  static volatile int check_no_argv(int argc, char **argv)
+         ^
+
+mice.c(189): warning #3334: a value of type "unsigned int *" cannot be used to initialize an entity of type "int *" due to signedness
+        {"dtr",  ARGV_BOOL, u: {iptr: &lines}, value: TIOCM_DTR},
+                                      ^
+
+mice.c(190): warning #3334: a value of type "unsigned int *" cannot be used to initialize an entity of type "int *" due to signedness
+        {"rts",  ARGV_BOOL, u: {iptr: &lines}, value: TIOCM_RTS},
+                                      ^
+
+mice.c(191): warning #3334: a value of type "unsigned int *" cannot be used to initialize an entity of type "int *" due to signedness
+        {"both", ARGV_BOOL, u: {iptr: &lines}, value: TIOCM_DTR | TIOCM_RTS},
+                                      ^
+
+mice.c(745): warning #2218: result of call is not used
+        write( fd, magic+i, 1 );
+        ^
+
+mice.c(746): warning #2218: result of call is not used
+        read( fd, &c, 1 );
+        ^
+
+mice.c(754): warning #2218: result of call is not used
+        read( fd, rep, 1 );
+        ^
+
+mice.c(755): warning #2218: result of call is not used
+        read( fd, rep+1, 1 );
+        ^
+
+mice.c(756): warning #2218: result of call is not used
+        read( fd, rep+2, 1 );
+        ^
+
+mice.c(1340): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "const char *__restrict__" in signedness
+     if(sscanf(data+1, "%d,%d", &x, &y)!= 2) {
+               ^
+
+mice.c(1618): warning #2218: result of call is not used
+     if (needtowrite) write(fd, c, 2);
+                      ^
+
+mice.c(1659): warning #2218: result of call is not used
+     if (type->fun==M_logimsc) write(fd, "QU", 2 );
+                               ^
+
+mice.c(1681): warning #2218: result of call is not used
+        write(fd, "*X", 2);
+        ^
+
+mice.c(1689): warning #2218: result of call is not used
+        write(fd, ":" ,1); 
+        ^
+
+mice.c(1690): warning #2218: result of call is not used
+        write(fd, "E" ,1); /* setup tablet. relative mode, resolution... */
+        ^
+
+mice.c(1691): warning #2218: result of call is not used
+        write(fd, "@" ,1); /* setup tablet. relative mode, resolution... */
+        ^
+
+mice.c(1707): warning #2218: result of call is not used
+        write(fd, "R", 1); /* initialize a mouse; without getting an "R" */
+        ^
+
+mice.c(1740): warning #2218: result of call is not used
+     write(fd, "S", 1);
+     ^
+
+mice.c(1746): warning #2218: result of call is not used
+     write(fd,sampletab[i].code,1);
+     ^
+
+mice.c(1765): warning #2218: result of call is not used
+     write(fd, UD_RESETBAUD, strlen(UD_RESETBAUD));
+     ^
+
+mice.c(1768): warning #2218: result of call is not used
+     write(fd, UD_RESET,     strlen(UD_RESET));
+     ^
+
+mice.c(1773): warning #2218: result of call is not used
+     write(fd, UD_RESET, strlen(UD_RESET));
+     ^
+
+mice.c(1775): warning #2218: result of call is not used
+     write(fd, UD_STOP, strlen(UD_STOP));
+     ^
+
+mice.c(1804): warning #2218: result of call is not used
+     if (cmd) write(fd,cmd,strlen(cmd));
+              ^
+
+mice.c(1871): warning #2218: result of call is not used
+     write(fd,UD_SENDCOORDS,4);
+     ^
+
+mice.c(1916): warning #2218: result of call is not used
+     write(fd, &c, 1);
+     ^
+
+mice.c(1917): warning #2218: result of call is not used
+     read(fd, &c, 1);
+     ^
+
+mice.c(1921): warning #2218: result of call is not used
+     read(fd, &id, 1);
+     ^
+
+mice.c(2132): warning #2218: result of call is not used
+     write(fd,0,1); /* Reset */
+     ^
+
+mice.c(2171): warning #2218: result of call is not used
+     write(fd, SS_PROMPT_MODE, strlen(SS_PROMPT_MODE));
+     ^
+
+mice.c(2177): warning #2218: result of call is not used
+        write(fd, SS_FIRMID, strlen(SS_FIRMID));
+        ^
+
+mice.c(2181): warning #2218: result of call is not used
+           read(fd, buffer, 255); /* Read Firm-ID */
+           ^
+
+mice.c(2187): warning #2218: result of call is not used
+        write(fd,GEN_MMSERIES,1); 
+        ^
+
+mice.c(2188): warning #2218: result of call is not used
+        write(fd,&GEN_MODELL,1); /* Read modell */
+        ^
+
+mice.c(2195): warning #2218: result of call is not used
+                 read(fd,&config,1);
+                 ^
+
+mice.c(2205): warning #2218: result of call is not used
+        write(fd, SS_BINARY_FMT SS_PROMPT_MODE, 3);
+        ^
+
+mice.c(2210): warning #2218: result of call is not used
+     if (!((err == -1) || (!err))) read(fd,buffer,sizeof(buffer));
+                                   ^
+
+mice.c(2211): warning #2218: result of call is not used
+     write(fd,SS_READCONFIG,1);
+     ^
+
+mice.c(2212): warning #2218: result of call is not used
+     read(fd,&config,5);
+     ^
+
+mice.c(2216): warning #2218: result of call is not used
+     write(fd,SS_ABSOLUTE SS_STREAM_MODE SS_UPPER_ORIGIN,3);
+     ^
+
+mice.c(2217): warning #2218: result of call is not used
+     if (summaid<0) write(fd,SS_500LPI SS_TABID0 SS_BINARY_FMT,4);
+                    ^
+
+mice.c(2240): warning #2218: result of call is not used
+     write(fd,"\001MS\r\n\001FT\r\n",10);
+     ^
+
+mice.c(2285): warning #2218: result of call is not used
+        fgets(s, 80, f); /* discard the comment */
+        ^
+
+mice.c(2337): warning #2218: result of call is not used
+  	fgets(s, 80, f); /* discard the comment */
+  	^
+
+mice.c(2380): warning #2218: result of call is not used
+     write(fd, ":S", 2);
+     ^
+
+mice.c(2384): warning #2218: result of call is not used
+     write(fd, "T", 1);
+     ^
+
+mice.c(2413): warning #2218: result of call is not used
+     write(fd, "O", 1);
+     ^
+
+prog/mouse-test.c(269): warning #2218: result of call is not used
+           else read(fd,buff,buflen);
+                ^
+
+prog/mouse-test.c(402): warning #2218: result of call is not used
+  	         read(cur->fd,buf,80); /* flush */
+  	         ^
+
+prog/mouse-test.c(472): warning #2218: result of call is not used
+     read(mousefd,buf,BUFLEN); /* flush */
+     ^
+
+prog/mouse-test.c(536): warning #2601: argument of type "char *" is incompatible with parameter of type "unsigned char *" in signedness
+  	         if ((*(cur->this->fun))(&event,buf+i)==-1) {
+  	                                        ^
+
+prog/mouse-test.c(610): warning #2601: argument of type "char *" is incompatible with parameter of type "unsigned char *" in signedness
+                 if ((*(cur->this->fun))(&event,buf+i)==-1) continue;
+                                                ^
+
+prog/mouse-test.c(652): warning #2601: argument of type "char *" is incompatible with parameter of type "unsigned char *" in signedness
+                 if ((*(cur->this->fun))(&event,buf+i)==-1) continue;
+                                                ^
+
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+ln -s -f libgpm.so.2.1.0 lib/libgpm.so.2
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/disable-paste prog/disable-paste.o lib/libgpm.so.2  
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/display-buttons prog/display-buttons.o lib/libgpm.so.2  
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/display-coords prog/display-coords.o lib/libgpm.so.2  
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/get-versions prog/get-versions.o lib/libgpm.so.2  
+icc.pl -I. -Wdate-time -D_FORTIFY_SOURCE=2 -I/dev/shm/gpm/gpm/src -DHAVE_CONFIG_H -include headers/config.h -Wall -DSYSCONFDIR="\"/etc\"" -DSBINDIR="\"/usr/sbin\"" -D_GNU_SOURCE -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -g -O2 -fdebug-prefix-map=/dev/shm/gpm/gpm=. -Wformat -march=native -pipe -Wformat-security -c -o prog/gpm-root.o prog/gpm-root.c
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/mev prog/mev.o lib/libgpm.so.2  
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/hltest prog/hltest.o lib/libgpm.so.2  
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_iccs7D1tk.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_iccs7D1tk.o
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(529): warning #2218: result of call is not used
+  	            dup(1);                     /* stderr */  
+  	            ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(661): warning #2218: result of call is not used
+           fscanf(f,"%lf %lf %lf",&l1,&l2,&l3);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(689): warning #2218: result of call is not used
+           fgets(s,80,f);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(690): warning #2218: result of call is not used
+           fgets(s,80,f); sscanf(s,"%*s %*s %*s %li",&l1);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(691): warning #2218: result of call is not used
+           fgets(s,80,f); sscanf(s,"%*s %*s %*s %li",&l2);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(957): warning #2218: result of call is not used
+     read(dumpfd,buffer,4);
+     ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(958): warning #2218: result of call is not used
+     read(dumpfd,buffer+4,2*buffer[0]*buffer[1]);
+     ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(977): warning #2218: result of call is not used
+     write(dumpfd,buffer,4+2*buffer[0]*buffer[1]);
+     ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(1045): warning #2602: a value of type "char *" cannot be assigned to an entity of type "unsigned char *" due to signedness
+           PUTS(draw->title,draw->head,draw->back);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(1053): warning #2602: a value of type "char *" cannot be assigned to an entity of type "unsigned char *" due to signedness
+           PUTS(item->name,draw->fore,draw->back); i+=strlen(item->name);
+           ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(1150): warning #2218: result of call is not used
+     setuid(0); /* if we're setuid, force it */
+     ^
+
+/dev/shm/gpm/gpm/src/prog/gpm-root.y(1230): warning #2218: result of call is not used
+     chdir("/");
+     ^
+
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/gpm-root prog/gpm-root.o   lib/libgpm.so.2
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_iccOiAxon.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_iccOiAxon.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+synaptics.c(2253): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "const char *__restrict__" in signedness
+    sscanf (bytes, "%x", &result);
+            ^
+
+synaptics.c(2274): warning #2218: result of call is not used
+      read (fd, &junk, 1);
+      ^
+
+synaptics.c(2320): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "const char *" in signedness
+    write (fd, cmd, strlen (cmd));
+                            ^
+
+synaptics.c(2320): warning #2218: result of call is not used
+    write (fd, cmd, strlen (cmd));
+    ^
+
+synaptics.c(2321): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "const char *" in signedness
+    tp_serial_read (fd, junk, strlen (cmd));
+                                      ^
+
+synaptics.c(2334): warning #2601: argument of type "unsigned char *" is incompatible with parameter of type "char *__restrict__" in signedness
+    sprintf (bytes, "%%C3B%02X5555", mode);
+             ^
+
+synaptics.c(2512): warning #2218: result of call is not used
+    read(fd, &b, 1);
+    ^
+
+synaptics.c(2532): warning #2218: result of call is not used
+    write(fd, &b, 1);
+    ^
+
+synaptics.c(2533): warning #2218: result of call is not used
+    read(fd, &ack, 1);
+    ^
+
+synaptics.c(2536): warning #2218: result of call is not used
+      write(fd, &b, 1);
+      ^
+
+synaptics.c(2537): warning #2218: result of call is not used
+      read(fd, &ack, 1);
+      ^
+
+synaptics.c(2799): warning #2218: result of call is not used
+    write(fd,&cmd,1);
+    ^
+
+synaptics.c(2804): warning #2218: result of call is not used
+      read (fd, &status, 1);
+      ^
+
+synaptics.c(2851): warning #2218: result of call is not used
+      write(fd,&reset_cmd,1);
+      ^
+
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o gpm mice.o twiddler.o synaptics.o daemon/add_mouse.o daemon/init_mice.o daemon/reset_mice.o daemon/build_argv.o daemon/disable_paste.o daemon/do_client.o daemon/do_selection.o daemon/get_console_size.o daemon/get_data.o daemon/getmousedata.o daemon/gpm.o daemon/gpm-killed.o daemon/header.o daemon/main.o daemon/old_main.o daemon/open_console.o daemon/check_kill.o daemon/gpm_exited.o generic/isodigit.o generic/getsym.o daemon/processspecial.o daemon/processconn.o daemon/processmouse.o daemon/processrequest.o daemon/selection_copy.o daemon/selection_paste.o daemon/cmdline.o daemon/loadlut.o daemon/find_mouse_by_name.o daemon/usage.o daemon/check_uniqueness.o daemon/startup.o daemon/wait_text.o report.o tools.o   -lm
+icc.pl -Wl,-z,now -L/dev/shm/gpm/gpm/src -Wl,-z,now -o prog/mouse-test prog/mouse-test.o mice.o twiddler.o synaptics.o prog/open_console.o lib/libgpm.so.2   -lm
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_iccw23Ce8.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_iccw23Ce8.o
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_iccz9JyXf.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_iccz9JyXf.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+rm prog/display-coords.o prog/hltest.o prog/mev.o prog/disable-paste.o prog/display-buttons.o prog/get-versions.o
+make[3]: Leaving directory '/dev/shm/gpm/gpm/src'
+make[3]: Entering directory '/dev/shm/gpm/gpm/doc'
+awk -f /dev/shm/gpm/gpm/doc/manpager doc.gpm
+/bin/sed -f /dev/shm/gpm/gpm/doc/infofilter /dev/shm/gpm/gpm/doc/doc.gpm > /dev/shm/gpm/gpm/doc/gpm.texinfo
+awk: /dev/shm/gpm/gpm/doc/manpager:49: warning: escape sequence `\{' treated as plain `{'
+awk: /dev/shm/gpm/gpm/doc/manpager:50: warning: escape sequence `\}' treated as plain `}'
+chmod 400 /dev/shm/gpm/gpm/doc/gpm.texinfo
+if [ "/usr/bin/makeinfo" != "no" ]; then /usr/bin/makeinfo --no-split /dev/shm/gpm/gpm/doc/gpm.texinfo -o /dev/shm/gpm/gpm/doc/gpm.info; fi
+for i in gpm-root.1 gpm-types.7 gpm.8 mev.1 gpm-mouse-test.8; do \
+	expand $i | sed s/^'[ ]*'//g > $i.new; \
+	mv $i.new $i; \
+done;
+touch gpm.man
+/dev/shm/gpm/gpm/doc/gpm.texinfo:32: warning: undefined flag: version
+/dev/shm/gpm/gpm/doc/gpm.texinfo:84: warning: multiple @setchapternewpage
+/dev/shm/gpm/gpm/doc/gpm.texinfo:89: warning: @subtitle missing argument
+/dev/shm/gpm/gpm/doc/gpm.texinfo:94: warning: multiple @setchapternewpage
+rm /dev/shm/gpm/gpm/doc/gpm.texinfo
+make[3]: Leaving directory '/dev/shm/gpm/gpm/doc'
+make[3]: Entering directory '/dev/shm/gpm/gpm/contrib'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/dev/shm/gpm/gpm/contrib'
+make[2]: Leaving directory '/dev/shm/gpm/gpm'
+make[1]: Leaving directory '/dev/shm/gpm/gpm'
+   dh_auto_test
+   create-stamp debian/debhelper-build-stamp
+ fakeroot debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+	rm -f -- debian/gpm.substvars debian/libgpm2.substvars debian/libgpm-dev.substvars
+	rm -fr -- debian/.debhelper/generated/gpm/ debian/gpm/ debian/tmp/ debian/.debhelper/generated/libgpm2/ debian/libgpm2/ debian/.debhelper/generated/libgpm-dev/ debian/libgpm-dev/
+   dh_installdirs
+	install -d debian/gpm/etc/apm/event.d debian/gpm/usr/bin debian/gpm/usr/lib/gpm debian/gpm/usr/sbin
+	rm -f debian/gpm.debhelper.log debian/libgpm-dev.debhelper.log debian/libgpm2.debhelper.log
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/dev/shm/gpm/gpm'
+mkdir -p debian/libgpm2/usr/lib/x86_64-linux-gnu
+mkdir -p debian/libgpm-dev/usr/lib/x86_64-linux-gnu
+ln -s libgpm.so.2 debian/libgpm-dev/usr/lib/x86_64-linux-gnu/libgpm.so
+make[1]: Leaving directory '/dev/shm/gpm/gpm'
+   dh_install
+	cp --reflink=auto -a ./debian/tmp/dh-exec.yPawd4RP/etc/apm/event.d/gpm debian/gpm/etc/apm/event.d//
+	cp --reflink=auto -a ./src/prog/mev debian/gpm/usr/bin//
+	cp --reflink=auto -a ./contrib/control/gpm_has_mouse_control debian/gpm/usr/lib/gpm//
+	cp --reflink=auto -a ./debian/tmp/dh-exec.yPawd4RP/usr/sbin/gpm-microtouch-setup ./debian/tmp/dh-exec.yPawd4RP/usr/sbin/gpm-mouse-test ./src/gpm debian/gpm/usr/sbin//
+	install -d debian/.debhelper/generated/gpm
+	cp --reflink=auto -a ./debian/tmp/dh-exec.TUvCg6uR/usr/lib/x86_64-linux-gnu/libgpm.so.2 debian/libgpm2/usr/lib/x86_64-linux-gnu//
+	install -d debian/.debhelper/generated/libgpm2
+	install -d debian/libgpm-dev/usr/include/
+	cp --reflink=auto -a ./src/headers/gpm.h debian/libgpm-dev/usr/include//
+	cp --reflink=auto -a ./src/lib/libgpm.a debian/libgpm-dev/usr/lib/x86_64-linux-gnu//
+	install -d debian/.debhelper/generated/libgpm-dev
+   dh_installdocs
+	install -d debian/gpm/usr/share/doc/gpm
+	install -p -m0644 debian/copyright debian/gpm/usr/share/doc/gpm/copyright
+	install -d debian/libgpm2/usr/share/doc/libgpm2
+	install -p -m0644 debian/copyright debian/libgpm2/usr/share/doc/libgpm2/copyright
+	install -d debian/libgpm-dev/usr/share/doc/libgpm-dev
+	install -p -m0644 debian/copyright debian/libgpm-dev/usr/share/doc/libgpm-dev/copyright
+   dh_installchangelogs
+	install -p -m0644 debian/changelog debian/gpm/usr/share/doc/gpm/changelog.Debian
+	install -p -m0644 doc/changelog debian/gpm/usr/share/doc/gpm/changelog
+	install -p -m0644 debian/changelog debian/libgpm2/usr/share/doc/libgpm2/changelog.Debian
+	install -p -m0644 doc/changelog debian/libgpm2/usr/share/doc/libgpm2/changelog
+	install -p -m0644 debian/changelog debian/libgpm-dev/usr/share/doc/libgpm-dev/changelog.Debian
+	install -p -m0644 doc/changelog debian/libgpm-dev/usr/share/doc/libgpm-dev/changelog
+   dh_installexamples
+   dh_installman
+   dh_installdebconf
+	install -d debian/gpm/DEBIAN
+	sed s/\#DEBHELPER\#// debian/gpm.config > debian/gpm/DEBIAN/config
+	chmod 0755 -- debian/gpm/DEBIAN/config
+	chown 0:0 -- debian/gpm/DEBIAN/config
+	po2debconf  debian/gpm.templates > debian/gpm/DEBIAN/templates
+	(grep -a -s -v misc:Depends debian/gpm.substvars; echo "misc:Depends=debconf (>= 0.5) | debconf-2.0") > debian/gpm.substvars.new
+	mv debian/gpm.substvars.new debian/gpm.substvars
+	[META] Append autosnippet "postrm-debconf" to postrm [debian/gpm.postrm.debhelper]
+	install -d debian/libgpm2/DEBIAN
+	install -d debian/libgpm-dev/DEBIAN
+   dh_installinfo
+   dh_installinit
+	install -d debian/gpm/etc/init.d
+	install -p -m0755 debian/gpm.init debian/gpm/etc/init.d/gpm
+	[META] Append autosnippet "postinst-init-restart" to postinst [debian/.debhelper/generated/gpm/postinst.service]
+	[META] Append autosnippet "prerm-init-norestart" to prerm [debian/.debhelper/generated/gpm/prerm.service]
+	[META] Append autosnippet "postrm-init" to postrm [debian/.debhelper/generated/gpm/postrm.service]
+   dh_lintian
+	install -d debian/gpm/usr/share/lintian/overrides
+	install -p -m0644 debian/gpm.lintian-overrides debian/gpm/usr/share/lintian/overrides/gpm
+   dh_perl
+   dh_link
+	rm -f debian/libgpm-dev/usr/lib/x86_64-linux-gnu/libgpm.so
+	ln -s libgpm.so.2 debian/libgpm-dev/usr/lib/x86_64-linux-gnu/libgpm.so
+   dh_strip_nondeterminism
+   dh_compress
+	cd debian/gpm
+	cd debian/libgpm2
+	cd debian/libgpm-dev
+	chmod a-x usr/share/doc/gpm/changelog usr/share/doc/gpm/changelog.Debian
+	chmod a-x usr/share/doc/libgpm2/changelog usr/share/doc/libgpm2/changelog.Debian
+	chmod a-x usr/share/doc/libgpm-dev/changelog usr/share/doc/libgpm-dev/changelog.Debian
+	gzip -9nf usr/share/doc/gpm/changelog usr/share/doc/gpm/changelog.Debian
+	gzip -9nf usr/share/doc/libgpm2/changelog usr/share/doc/libgpm2/changelog.Debian
+	gzip -9nf usr/share/doc/libgpm-dev/changelog usr/share/doc/libgpm-dev/changelog.Debian
+	cd '/dev/shm/gpm/gpm'
+	cd '/dev/shm/gpm/gpm'
+	cd '/dev/shm/gpm/gpm'
+   dh_fixperms
+	find debian/gpm -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libgpm2 -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libgpm-dev -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/libgpm2 ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libgpm-dev ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/gpm ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/libgpm2/usr/share/doc -type f -a -true -a ! -regex 'debian/libgpm2/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libgpm-dev/usr/share/doc -type f -a -true -a ! -regex 'debian/libgpm-dev/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gpm/usr/share/doc -type f -a -true -a ! -regex 'debian/gpm/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libgpm2/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/libgpm-dev/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/gpm/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/libgpm2 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libgpm-dev/usr/include -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gpm/usr/share/lintian/overrides -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libgpm2/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/libgpm-dev -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gpm -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/libgpm-dev/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/gpm/usr/bin debian/gpm/usr/sbin debian/gpm/etc/init.d -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/gpm/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+   dh_missing
+   dh_strip
+	strip --strip-debug --remove-section=.comment --remove-section=.note --enable-deterministic-archives debian/libgpm-dev/usr/lib/x86_64-linux-gnu/libgpm.a
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/libgpm2/dbgsym-root/usr/lib/debug/.build-id/e2
+	objcopy --only-keep-debug --compress-debug-sections debian/libgpm2/usr/lib/x86_64-linux-gnu/libgpm.so.2 debian/.debhelper/libgpm2/dbgsym-root/usr/lib/debug/.build-id/e2/3c2acc0d0a9c318ca8af4e166ce559d1b1d478.debug
+	install -d debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/2b
+	objcopy --only-keep-debug --compress-debug-sections debian/gpm/usr/sbin/gpm debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/2b/52000f6671b9edf58d268db811158d9d8f93c4.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/libgpm2/dbgsym-root/usr/lib/debug/.build-id/e2/3c2acc0d0a9c318ca8af4e166ce559d1b1d478.debug
+	chown 0:0 -- debian/.debhelper/libgpm2/dbgsym-root/usr/lib/debug/.build-id/e2/3c2acc0d0a9c318ca8af4e166ce559d1b1d478.debug
+	strip --remove-section=.comment --remove-section=.note --strip-unneeded debian/libgpm2/usr/lib/x86_64-linux-gnu/libgpm.so.2
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/libgpm2/dbgsym-root/usr/lib/debug/.build-id/e2/3c2acc0d0a9c318ca8af4e166ce559d1b1d478.debug debian/libgpm2/usr/lib/x86_64-linux-gnu/libgpm.so.2
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/libgpm2/dbgsym-root/usr/share/doc
+	ln -s libgpm2 debian/.debhelper/libgpm2/dbgsym-root/usr/share/doc/libgpm2-dbgsym
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/2b/52000f6671b9edf58d268db811158d9d8f93c4.debug
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/2b/52000f6671b9edf58d268db811158d9d8f93c4.debug
+	strip --remove-section=.comment --remove-section=.note debian/gpm/usr/sbin/gpm
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/2b/52000f6671b9edf58d268db811158d9d8f93c4.debug debian/gpm/usr/sbin/gpm
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/5a
+	objcopy --only-keep-debug --compress-debug-sections debian/gpm/usr/sbin/gpm-mouse-test debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/5a/4f882a336581818656646bc22b5a4b4e90a96c.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/5a/4f882a336581818656646bc22b5a4b4e90a96c.debug
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/5a/4f882a336581818656646bc22b5a4b4e90a96c.debug
+	strip --remove-section=.comment --remove-section=.note debian/gpm/usr/sbin/gpm-mouse-test
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/5a/4f882a336581818656646bc22b5a4b4e90a96c.debug debian/gpm/usr/sbin/gpm-mouse-test
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/4d
+	objcopy --only-keep-debug --compress-debug-sections debian/gpm/usr/lib/gpm/gpm_has_mouse_control debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/4d/b95909ac2fecbb1ae8f2b2706f34cd674b7c28.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/4d/b95909ac2fecbb1ae8f2b2706f34cd674b7c28.debug
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/4d/b95909ac2fecbb1ae8f2b2706f34cd674b7c28.debug
+	strip --remove-section=.comment --remove-section=.note debian/gpm/usr/lib/gpm/gpm_has_mouse_control
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/4d/b95909ac2fecbb1ae8f2b2706f34cd674b7c28.debug debian/gpm/usr/lib/gpm/gpm_has_mouse_control
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/7f
+	objcopy --only-keep-debug --compress-debug-sections debian/gpm/usr/bin/mev debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/7f/dad50e699506b2dd4184d10686464e6302db73.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/7f/dad50e699506b2dd4184d10686464e6302db73.debug
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/7f/dad50e699506b2dd4184d10686464e6302db73.debug
+	strip --remove-section=.comment --remove-section=.note debian/gpm/usr/bin/mev
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/gpm/dbgsym-root/usr/lib/debug/.build-id/7f/dad50e699506b2dd4184d10686464e6302db73.debug debian/gpm/usr/bin/mev
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/gpm/dbgsym-root/usr/share/doc
+	ln -s gpm debian/.debhelper/gpm/dbgsym-root/usr/share/doc/gpm-dbgsym
+   dh_makeshlibs
+	rm -f debian/gpm/DEBIAN/shlibs
+	rm -f debian/libgpm2/DEBIAN/shlibs
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -p -m0644 debian/libgpm2.shlibs debian/libgpm2/DEBIAN/shlibs
+	chmod 0644 -- debian/libgpm2/DEBIAN/shlibs
+	chown 0:0 -- debian/libgpm2/DEBIAN/shlibs
+	dpkg-gensymbols -plibgpm2 -Idebian/libgpm2.symbols -Pdebian/libgpm2 -edebian/libgpm2/usr/lib/x86_64-linux-gnu/libgpm.so.2
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-gensymbols: warning: some new symbols appeared in the symbols file: see diff output below
+dpkg-gensymbols: warning: debian/libgpm2/DEBIAN/symbols doesn't match completely debian/libgpm2.symbols
+--- debian/libgpm2.symbols (libgpm2_1.20.7-6_amd64)
++++ dpkg-gensymbols65foYV	2019-01-11 05:04:06.251861122 +0100
+@@ -19,8 +19,28 @@
+  Gpm_cnt_digits@Base 1.20.7
+  Gpm_get_console@Base 1.20.7
+  Gpm_x_high_y@Base 1.20.7
++ __cacheSize@Base 1.20.7-6
++ __intel_avx_rep_memcpy@Base 1.20.7-6
++ __intel_memcpy@Base 1.20.7-6
++ __intel_mic_avx512f_memcpy@Base 1.20.7-6
++ __intel_new_memcpy@Base 1.20.7-6
++ __intel_sse4_atol@Base 1.20.7-6
++ __intel_sse4_strcpy@Base 1.20.7-6
++ __intel_sse4_strdup@Base 1.20.7-6
++ __intel_sse4_strlen@Base 1.20.7-6
++ __intel_sse4_strncmp@Base 1.20.7-6
++ __intel_ssse3_memcpy@Base 1.20.7-6
++ __intel_ssse3_rep_memcpy@Base 1.20.7-6
+  _gpm_arg@Base 1.20.7
+  _gpm_buf@Base 1.20.7
++ _intel_fast_memcpy.A@Base 1.20.7-6
++ _intel_fast_memcpy.J@Base 1.20.7-6
++ _intel_fast_memcpy.M@Base 1.20.7-6
++ _intel_fast_memcpy.P@Base 1.20.7-6
++ _intel_fast_memcpy.V@Base 1.20.7-6
++ _intel_fast_memcpy.Z@Base 1.20.7-6
++ _intel_fast_memcpy.a@Base 1.20.7-6
++ _intel_fast_memcpy@Base 1.20.7-6
+  gpm_consolefd@Base 1.20.7
+  gpm_convert_event@Base 1.20.7
+  gpm_current_roi@Base 1.20.7
+	mv debian/.debhelper/generated/libgpm2/triggers.new debian/.debhelper/generated/libgpm2/triggers
+	rm -f debian/libgpm-dev/DEBIAN/shlibs
+   dh_shlibdeps
+	dpkg-shlibdeps -Tdebian/libgpm2.substvars debian/libgpm2/usr/lib/x86_64-linux-gnu/libgpm.so.2
+	dpkg-shlibdeps -Tdebian/gpm.substvars debian/gpm/usr/sbin/gpm-mouse-test debian/gpm/usr/sbin/gpm debian/gpm/usr/lib/gpm/gpm_has_mouse_control debian/gpm/usr/bin/mev
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+   dh_installdeb
+	cp -f debian/gpm.postinst debian/gpm/DEBIAN/postinst
+	perl -p -i -e "s~#DEBHELPER#~qx{cat debian/.debhelper/generated/gpm/postinst.service}~eg" debian/gpm/DEBIAN/postinst
+	chmod 0755 -- debian/gpm/DEBIAN/postinst
+	chown 0:0 -- debian/gpm/DEBIAN/postinst
+	cp -f debian/gpm.prerm debian/gpm/DEBIAN/prerm
+	perl -p -i -e "s~#DEBHELPER#~qx{cat debian/.debhelper/generated/gpm/prerm.service}~eg" debian/gpm/DEBIAN/prerm
+	chmod 0755 -- debian/gpm/DEBIAN/prerm
+	chown 0:0 -- debian/gpm/DEBIAN/prerm
+	cp -f debian/gpm.postrm debian/gpm/DEBIAN/postrm
+	perl -p -i -e "s~#DEBHELPER#~qx{cat debian/.debhelper/generated/gpm/postrm.service debian/gpm.postrm.debhelper}~eg" debian/gpm/DEBIAN/postrm
+	chmod 0755 -- debian/gpm/DEBIAN/postrm
+	chown 0:0 -- debian/gpm/DEBIAN/postrm
+	find debian/gpm/etc -type f -printf '/etc/%P
+' | LC_ALL=C sort >> debian/gpm/DEBIAN/conffiles
+	chmod 0644 -- debian/gpm/DEBIAN/conffiles
+	chown 0:0 -- debian/gpm/DEBIAN/conffiles
+	install -p -m0644 debian/.debhelper/generated/libgpm2/triggers debian/libgpm2/DEBIAN/triggers
+   dh_gencontrol
+	echo misc:Depends= >> debian/libgpm-dev.substvars
+	echo misc:Pre-Depends= >> debian/libgpm-dev.substvars
+	dpkg-gencontrol -plibgpm-dev -ldebian/changelog -Tdebian/libgpm-dev.substvars -Pdebian/libgpm-dev
+	echo misc:Pre-Depends= >> debian/gpm.substvars
+	install -d debian/.debhelper/gpm/dbgsym-root/DEBIAN
+	dpkg-gencontrol -pgpm -ldebian/changelog -Tdebian/gpm.substvars -Pdebian/.debhelper/gpm/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=gpm-dbgsym "-DDepends=gpm (= \${binary:Version})" "-DDescription=debug symbols for gpm" "-DBuild-Ids=2b52000f6671b9edf58d268db811158d9d8f93c4 4db95909ac2fecbb1ae8f2b2706f34cd674b7c28 5a4f882a336581818656646bc22b5a4b4e90a96c 7fdad50e699506b2dd4184d10686464e6302db73" -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	echo misc:Depends= >> debian/libgpm2.substvars
+	echo misc:Pre-Depends= >> debian/libgpm2.substvars
+	install -d debian/.debhelper/libgpm2/dbgsym-root/DEBIAN
+	dpkg-gencontrol -plibgpm2 -ldebian/changelog -Tdebian/libgpm2.substvars -Pdebian/.debhelper/libgpm2/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=libgpm2-dbgsym "-DDepends=libgpm2 (= \${binary:Version})" "-DDescription=debug symbols for libgpm2" -DBuild-Ids=e23c2acc0d0a9c318ca8af4e166ce559d1b1d478 -DSection=debug -UReplaces -UBreaks
+	chmod 0644 -- debian/libgpm-dev/DEBIAN/control
+	chown 0:0 -- debian/libgpm-dev/DEBIAN/control
+	chmod 0644 -- debian/.debhelper/libgpm2/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/libgpm2/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -plibgpm2 -ldebian/changelog -Tdebian/libgpm2.substvars -Pdebian/libgpm2
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -pgpm -ldebian/changelog -Tdebian/gpm.substvars -Pdebian/gpm
+	chmod 0644 -- debian/libgpm2/DEBIAN/control
+	chown 0:0 -- debian/libgpm2/DEBIAN/control
+	chmod 0644 -- debian/gpm/DEBIAN/control
+	chown 0:0 -- debian/gpm/DEBIAN/control
+   dh_md5sums
+	cd debian/gpm >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/libgpm2 >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/libgpm-dev >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/libgpm2/DEBIAN/md5sums
+	chown 0:0 -- debian/libgpm2/DEBIAN/md5sums
+	chmod 0644 -- debian/gpm/DEBIAN/md5sums
+	chown 0:0 -- debian/gpm/DEBIAN/md5sums
+	chmod 0644 -- debian/libgpm-dev/DEBIAN/md5sums
+	chown 0:0 -- debian/libgpm-dev/DEBIAN/md5sums
+	cd debian/.debhelper/libgpm2/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	cd debian/.debhelper/gpm/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/libgpm2/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/libgpm2/dbgsym-root/DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/gpm/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/gpm/dbgsym-root/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/gpm ..
+	dpkg-deb --build debian/.debhelper/gpm/dbgsym-root ..
+	dpkg-deb --build debian/libgpm2 ..
+	dpkg-deb --build debian/.debhelper/libgpm2/dbgsym-root ..
+	dpkg-deb --build debian/libgpm-dev ..
+dpkg-deb: building package 'gpm-dbgsym' in '../gpm-dbgsym_1.20.7-6_amd64.deb'.
+dpkg-deb: building package 'libgpm2-dbgsym' in '../libgpm2-dbgsym_1.20.7-6_amd64.deb'.
+dpkg-deb: building package 'libgpm-dev' in '../libgpm-dev_1.20.7-6_amd64.deb'.
+dpkg-deb: building package 'gpm' in '../gpm_1.20.7-6_amd64.deb'.
+dpkg-deb: building package 'libgpm2' in '../libgpm2_1.20.7-6_amd64.deb'.
+FAKEROOTKEY=2054850880 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../gpm_1.20.7-6_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-source: info: unapplying 94_gpm-1.20.7-glibc-2.26-1.patch
+dpkg-source: info: unapplying 093_fix-typos.patch
+dpkg-source: info: unapplying 092_fix-format-not-a-string-literal-and-no-format-arguments.patch
+dpkg-source: info: unapplying 091_glibc_2.17_types
+dpkg-source: info: unapplying 090_linux3_versions
+dpkg-source: info: unapplying 080_cross-compile.patch
+dpkg-source: info: unapplying 070_struct_ucred
+dpkg-source: info: unapplying 060_no_blocking_on_mouse_device_under_x
+dpkg-source: info: unapplying 050_dont_link_libcurses
+dpkg-source: info: unapplying 031_max_consoles.patch
+dpkg-source: info: unapplying 014_has_mouse_control.patch
+dpkg-source: info: unapplying 013_xterm_mouse_support_000
+dpkg-source: info: unapplying 010_ps2_rework.patch
+dpkg-source: info: unapplying 007_doc_fix_FAQ
+dpkg-source: info: unapplying 007_doc_fix_001
+dpkg-source: info: unapplying 007_doc_fix_000
+dpkg-source: info: unapplying 005_types_000
+dpkg-source: info: unapplying 002_force_repeat_000
+dpkg-source: info: unapplying 001_missing_V_option.patch
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian gpm_1.20.7-6_amd64.changes ...
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+E: libgpm2: symbols-file-contains-current-version-with-debian-revision on symbol __cacheSize@Base and 19 others
+W: gpm: hardening-no-pie usr/bin/mev
+W: gpm: hardening-no-pie usr/sbin/gpm
+W: gpm: hardening-no-pie usr/sbin/gpm-mouse-test
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: gpm: binary-without-manpage usr/sbin/gpm
+W: gpm: binary-without-manpage usr/sbin/gpm-microtouch-setup
+W: gpm: binary-without-manpage usr/sbin/gpm-mouse-test
+W: gpm: binary-without-manpage usr/bin/mev
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+N: 1 tag overridden (1 warning)
+Finished running lintian.

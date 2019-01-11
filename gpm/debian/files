@@ -1,0 +1,6 @@
+gpm-dbgsym_1.20.7-6_amd64.deb debug optional automatic=yes
+gpm_1.20.7-6_amd64.buildinfo misc optional
+gpm_1.20.7-6_amd64.deb misc optional
+libgpm-dev_1.20.7-6_amd64.deb libdevel optional
+libgpm2-dbgsym_1.20.7-6_amd64.deb debug optional automatic=yes
+libgpm2_1.20.7-6_amd64.deb libs optional

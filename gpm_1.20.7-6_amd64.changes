@@ -1,0 +1,40 @@
+Format: 1.8
+Date: Sat, 28 Apr 2018 16:56:34 +0200
+Source: gpm
+Binary: gpm libgpm2 libgpm-dev
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64
+Version: 1.20.7-6
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Axel Beckert <abe@debian.org>
+Changed-By: Samuel Thibault <sthibault@debian.org>
+Description:
+ gpm        - General Purpose Mouse interface
+ libgpm-dev - General Purpose Mouse - development files
+ libgpm2    - General Purpose Mouse - shared library
+Changes:
+ gpm (1.20.7-6) UNRELEASED; urgency=medium
+ .
+   * Bump Standards-Version to 4.1.4 (no changes).
+Checksums-Sha1:
+ c0770426a68abf6dfb507ab45f389787be2542dc 167284 gpm-dbgsym_1.20.7-6_amd64.deb
+ 732a67c54ec419f19dccf5e9f235a21fa462b2c1 6438 gpm_1.20.7-6_amd64.buildinfo
+ 3e483f953a0be145311770b2d1281163c4a2910b 163192 gpm_1.20.7-6_amd64.deb
+ 095f8a16a556c81ac8c3accbce96bc489030e001 178456 libgpm-dev_1.20.7-6_amd64.deb
+ d5f89c7e44e29f45a4d374b483ee14ba86a60901 20028 libgpm2-dbgsym_1.20.7-6_amd64.deb
+ 2ddeb4cb93f1ff8fd7d12384010ad90c98e948fd 52804 libgpm2_1.20.7-6_amd64.deb
+Checksums-Sha256:
+ c9dfcd1783b5fb74da6ea263537325e391f8da79d6e7c07e43f4ff48c4577f9c 167284 gpm-dbgsym_1.20.7-6_amd64.deb
+ b874852a1e143712ba391a43a0418b84ef3a280a6ffbc4bb0e52691a8db60f54 6438 gpm_1.20.7-6_amd64.buildinfo
+ d0735ddd74133e647ecec02b1b8eba8b9a153b20b642b14ff3455eab32055a32 163192 gpm_1.20.7-6_amd64.deb
+ 2d29a107bd335928d197059601b771ad4182babbcfcc500a07ffd9a6aec0d14a 178456 libgpm-dev_1.20.7-6_amd64.deb
+ b97b707f5db05a963c131fcaa6c4d2dbb9fd5752a327cb5261510762f12627d4 20028 libgpm2-dbgsym_1.20.7-6_amd64.deb
+ d91a5ada94c903c30f1abfa0a717d63b8f14ce1914870b2bf0e2cb3bc3815ca1 52804 libgpm2_1.20.7-6_amd64.deb
+Files:
+ 005adaa98e3c17bfdb80cbc1e0500513 167284 debug optional gpm-dbgsym_1.20.7-6_amd64.deb
+ f7463c7ab13c547756ac9cd94272ac28 6438 misc optional gpm_1.20.7-6_amd64.buildinfo
+ 98cb2f0727b1351f831b5cd1f3c7fa0c 163192 misc optional gpm_1.20.7-6_amd64.deb
+ e9d58b69da2e99266d1caece784d461e 178456 libdevel optional libgpm-dev_1.20.7-6_amd64.deb
+ b5fc074c967c625872db2bc9fe1597f4 20028 debug optional libgpm2-dbgsym_1.20.7-6_amd64.deb
+ 755f15b05ae2df1d76c32980e67d15e4 52804 libs optional libgpm2_1.20.7-6_amd64.deb
